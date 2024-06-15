@@ -1,6 +1,7 @@
 import BreadCrumbs from '@/components/BreadCrumbs';
 import Button from '@/components/Button';
 import RatingsBar from '@/components/RatingsBar';
+import useCart from '@/hooks/useCart';
 import { useGetProductQuery } from '@/services/products';
 import {
 	ArrowLeftIcon,
@@ -12,6 +13,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 const ProductPage = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
+	const { isInCart, addProduct } = useCart();
 	const { data: product, isLoading } = useGetProductQuery(id!);
 
 	function handleBack() {
@@ -89,8 +91,13 @@ const ProductPage = () => {
 					</div>
 
 					<div className='flex gap-x-3'>
-						<Button className='inline-flex gap-x-2 items-center'>
-							Add to Cart
+						<Button
+							onClick={() => !isInCart(product.id) && addProduct(product)}
+							disabled={isInCart(product.id)}
+							className='inline-flex gap-x-2 items-center'
+						>
+							{isInCart(product.id) ? 'Added to Cart' : 'Add to Cart'}
+
 							<ShoppingCartIcon
 								width={20}
 								height={20}
