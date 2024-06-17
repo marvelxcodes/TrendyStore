@@ -21,6 +21,7 @@ const SearchBar = () => {
 			/>
 			<input
 				type='search'
+				data-testid='search-input'
 				defaultValue={params.get('query') || ''}
 				onChange={(e) => {
 					debounced(e.currentTarget.value);

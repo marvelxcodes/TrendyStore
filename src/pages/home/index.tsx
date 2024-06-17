@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
+import useCart from '@/hooks/useCart';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '@/components/ProductCard';
 import CategoryLinks from '@/components/CategoryLinks';
 import { useGetProductsQuery } from '@/services/products';
-import useCart from '@/hooks/useCart';
 
 const HomePage = () => {
 	const [params] = useSearchParams();
@@ -29,7 +29,10 @@ const HomePage = () => {
 							: 'Popular Picks'}
 					</h2>
 
-					<div className='container mx-auto grid gap-6 lg:grid-cols-2 md:grid-cols-3 sm:grid-cols-2'>
+					<div
+						data-testid='products-container'
+						className='container mx-auto grid gap-6 lg:grid-cols-2 md:grid-cols-3 sm:grid-cols-2'
+					>
 						<Suspense>
 							{products &&
 								(products.length > 0 ? (
