@@ -1,7 +1,7 @@
 import Button from './Button';
+import RatingsBar from './RatingsBar';
 import { Link } from 'react-router-dom';
 import { ProductType } from '@/types/api';
-import RatingsBar from './RatingsBar';
 
 type ProductCardProps = ProductType & {
 	inCart: (id: number) => boolean;
@@ -24,6 +24,7 @@ const ProductCard = ({
 	return (
 		<div
 			key={id}
+			data-testid='product-card'
 			className='flex max-lg:flex-col border p-6 gap-x-3 bg-white'
 		>
 			<div className='lg:w-36 grid w-full place-items-center'>
@@ -56,6 +57,7 @@ const ProductCard = ({
 				</div>
 
 				<Button
+					data-testid='add-to-cart'
 					onClick={() =>
 						inCart(id)
 							? removeProduct(id)
