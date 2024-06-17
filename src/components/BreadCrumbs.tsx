@@ -8,10 +8,14 @@ const BreadCrumbs = ({ path }: BreadCrumbsProps) => {
 	return (
 		<div className='flex items-center'>
 			{path.map((route, index) => (
-				<div className='flex items-center'>
+				<div
+					key={route}
+					className='flex items-center'
+				>
 					<span className='font-medium'>{route}</span>
 					{index < path.length - 1 && (
 						<ChevronRightIcon
+							data-testid='chevron-icon'
 							height={16}
 							strokeWidth={2.5}
 							width={16}

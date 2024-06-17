@@ -4,7 +4,8 @@ export default {
 	moduleNameMapper: {
 		'@/(.*)': '<rootDir>/src/$1'
 	},
-	modulePaths: ['./tests'],
+	rootDir: './tests/components',
+	modulePaths: ['./tests/components'],
 	coverageDirectory: '../coverage',
 	moduleFileExtensions: ['js', 'tsx', 'ts'],
 	transform: { '^.+\\.(t|j)s$': 'ts-jest' },

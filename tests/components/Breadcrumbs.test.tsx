@@ -1,20 +1,6 @@
-import React from 'react';
 import '@testing-library/jest-dom';
-import { JSX } from 'react/jsx-runtime';
 import { render, screen } from '@testing-library/react';
 import BreadCrumbs from '../../src/components/BreadCrumbs';
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
-
-jest.mock('@heroicons/react/24/outline', () => ({
-	ChevronRightIcon: (
-		props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-	) => (
-		<ChevronRightIcon
-			{...props}
-			data-testid='chevron-icon'
-		/>
-	)
-}));
 
 describe('BreadCrumbs component', () => {
 	it('renders without crashing', () => {
