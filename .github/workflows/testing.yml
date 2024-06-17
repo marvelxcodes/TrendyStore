@@ -18,19 +18,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Installing PNPM
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
     - name: Installing Dependencies
-      run: npm install
+      run: pnpm install --frozen-lockfile
 
     - name: Building App
-      run: npm run build --if-present
+      run: pnpm run build --if-present
     
     - name: Running Unit Tests
-      run: npm run test
+      run: pnpm run test
 
     - name: Running E2E Tests
-      run: npm run test:e2e
+      run: pnpm run test:e2e
